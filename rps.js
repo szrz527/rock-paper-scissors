@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection) {
     }
     else return("Choose rock, paper or scissors!");
 }
-function RPSGame() {
+/*function RPSGame() {
     let playerScore = 0;
     let computerScore = 0;
     while (playerScore < 5 && computerScore < 5) {
@@ -51,9 +51,31 @@ function RPSGame() {
                 break;
             case "(":
                 computerScore++;
-        }
+    //    }
     }
     console.log("Az eredmény: A te pontszámod:" + playerScore + " A gép pontszáma:" + computerScore);
 
 }
-RPSGame();
+RPSGame();*/
+
+const btnko = document.querySelector('#btnko');
+const btnpa = document.querySelector('#btnpa');
+const btnol = document.querySelector('#btnol');
+
+btnko.addEventListener('click', () => {
+    let computerSelection = computerPlay();
+    console.log(playRound("rock", computerSelection));
+});
+
+btnpa.addEventListener('click', () => {
+    let computerSelection = computerPlay();
+    console.log(playRound("paper", computerSelection));
+});
+
+btnol.addEventListener('click', () => {
+    let computerSelection = computerPlay();
+    console.log(playRound("scissors", computerSelection));
+});
+
+const eredmeny = document.createElement("p");
+eredmeny.textContent = ""
