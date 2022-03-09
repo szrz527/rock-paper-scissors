@@ -1,3 +1,6 @@
+let playerScore  = 0;
+let computerScore = 0;
+
 function computerPlay() {
     let computerNumber = Math.floor(Math.random() * 3);
     if (computerNumber == 0) {
@@ -8,74 +11,65 @@ function computerPlay() {
         }
         else return("Scissors");
 }
-function playRound(playerSelection, computerSelection) {  
+function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() == "ROCK") {
         if (computerSelection == "Paper") {
-            return("You lose! Paper beats rock. :(");
+            computerScore++;
+            return("You lose this round! Paper beats rock. :(");
         }
         else if (computerSelection == "Scissors") {
-            return("You win! Rock beats scissors! :)");
+            playerScore++;
+            return("You win this round! Rock beats scissors! :)");
         }
         else return("It's a tie! :|");
     }
     else if (playerSelection.toUpperCase() == "PAPER") {
         if (computerSelection == "Rock") {
-            return("You win! Paper beats rock! :)");
+            playerScore++;
+            return("You win this round! Paper beats rock! :)");
         }
         else if (computerSelection == "Scissors") {
-            return("You lose! Scissors beats paper. :(");
+            computerScore++;
+            return("You lose this round! Scissors beats paper. :(");
         }
-        else return("It's atie! :|");
-    }
+        else return("It's a tie! :|");
+    }       
     else if (playerSelection.toUpperCase() == "SCISSORS") {
         if (computerSelection == "Rock") {
-            return("You lose! Rock beats scissors. :(");
+            computerScore++;
+            return("You lose this round! Rock beats scissors. :(");
         }
         else if (computerSelection == "Paper") {
-            return("You win! Scissors beats paper! :)");
+            playerScore++;
+            return("You win this round! Scissors beats paper! :)");
         }
         else return ("It's a tie. :|");
     }
-    else return("Choose rock, paper or scissors!");
 }
-/*function RPSGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    while (playerScore < 5 && computerScore < 5) {
-        let playerSelection = prompt("Rock, paper or scissors?");
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
         let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-        switch ((playRound(playerSelection, computerSelection).slice(-1))) {
-            case ")":
-                playerScore++;
-                break;
-            case "(":
-                computerScore++;
-    //    }
-    }
-    console.log("Az eredmény: A te pontszámod:" + playerScore + " A gép pontszáma:" + computerScore);
-
-}
-RPSGame();*/
-
-const btnko = document.querySelector('#btnko');
-const btnpa = document.querySelector('#btnpa');
-const btnol = document.querySelector('#btnol');
-
-btnko.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    console.log(playRound("rock", computerSelection));
+        if (playerScore < 5 && computerScore < 5) {
+            aktualisJatekKiir.textContent = playRound(button.id, computerSelection);
+        }
+        if (playerScore == 5) {
+            aktualisJatekKiir.textContent = "Győztél!"
+        }
+        else if (computerScore == 5) {
+            aktualisJatekKiir.textContent = "Bukó!"
+        }
+        jatekosEredmenyKiir.textContent = "Játékos pontszáma: " + playerScore;
+        computerEredmenyKiir.textContent = "Számítógép pontszáma: " + computerScore;
+    });
 });
 
-btnpa.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    console.log(playRound("paper", computerSelection));
-});
+const jatekosEredmenyKiir = document.createElement("p");
+const computerEredmenyKiir = document.createElement("p");
+const aktualisJatekKiir = document.createElement("p");
 
-btnol.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    console.log(playRound("scissors", computerSelection));
-});
-
-const eredmeny = document.createElement("p");
-eredmeny.textContent = ""
+results.appendChild(aktualisJatekKiir);
+results.appendChild(jatekosEredmenyKiir);
+results.appendChild(computerEredmenyKiir);
