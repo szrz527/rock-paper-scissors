@@ -45,6 +45,10 @@ function playRound(playerSelection, computerSelection) {
         }
         else return ("It's a tie. :|");
     }
+    else if (playerSelection.toUpperCase() == "RESET") {
+        playerScore = 0;
+        computerScore = 0;
+    }
 }
 
 const buttons = document.querySelectorAll("button");
@@ -56,10 +60,14 @@ buttons.forEach((button) => {
             aktualisJatekKiir.textContent = playRound(button.id, computerSelection);
         }
         if (playerScore == 5) {
-            aktualisJatekKiir.textContent = "Győztél!"
+            aktualisJatekKiir.textContent = "Győztél! Az eredmény: " + playerScore + " - " + computerScore + ".";
+            playerScore = 0;
+            computerScore = 0;
         }
         else if (computerScore == 5) {
-            aktualisJatekKiir.textContent = "Bukó!"
+            aktualisJatekKiir.textContent = "Vesztettél! Az eredmény: " + playerScore + " - " + computerScore + ".";
+            playerScore = 0;
+            computerScore = 0;
         }
         jatekosEredmenyKiir.textContent = "Játékos pontszáma: " + playerScore;
         computerEredmenyKiir.textContent = "Számítógép pontszáma: " + computerScore;
