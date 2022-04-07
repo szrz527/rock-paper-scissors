@@ -15,35 +15,35 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() == "ROCK") {
         if (computerSelection == "Paper") {
             computerScore++;
-            return("You lose this round! Paper beats rock. :(");
+            return("Ezt a kört elvesztetted! A papír üti a követ. :(");
         }
         else if (computerSelection == "Scissors") {
             playerScore++;
-            return("You win this round! Rock beats scissors! :)");
+            return("Nyertél ebben a körben! A kő üti az ollót. :)");
         }
-        else return("It's a tie! :|");
+        else return("Döntetlen! :|");
     }
     else if (playerSelection.toUpperCase() == "PAPER") {
         if (computerSelection == "Rock") {
             playerScore++;
-            return("You win this round! Paper beats rock! :)");
+            return("Nyertél ebben a körben! A papír üti a követ! :)");
         }
         else if (computerSelection == "Scissors") {
             computerScore++;
-            return("You lose this round! Scissors beats paper. :(");
+            return("Ezt a kört elvesztetted! Az olló üti a papírt. :(");
         }
-        else return("It's a tie! :|");
+        else return("Döntetlen! :|");
     }       
     else if (playerSelection.toUpperCase() == "SCISSORS") {
         if (computerSelection == "Rock") {
             computerScore++;
-            return("You lose this round! Rock beats scissors. :(");
+            return("Ezt a kört elvesztetted! A kő üti az ollót. :(");
         }
         else if (computerSelection == "Paper") {
             playerScore++;
-            return("You win this round! Scissors beats paper! :)");
+            return("Nyertél ebben a körben! Az olló üti a papírt. :)");
         }
-        else return ("It's a tie. :|");
+        else return ("Döntetlen! :|");
     }
     else if (playerSelection.toUpperCase() == "RESET") {
         playerScore = 0;
